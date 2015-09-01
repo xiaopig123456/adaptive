@@ -1,8 +1,10 @@
 # adaptive
 H5端自适应框架
-
+参考页面：
+https://8.baidu.com/template/wise/wise.html?infoFrontCode=000464
 ###使用方法：
 ```javascript
+在页面head写入以下代码，实时更新html的fontsize:
 <script src="js/adaptive.js"></script>
 <script>
     window['adaptive'].desinWidth = 640;// 设计图宽度
