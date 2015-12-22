@@ -1,14 +1,16 @@
 # adaptive
 H5端自适应框架
 参考页面：
-https://8.baidu.com/template/wise/wise.html?infoFrontCode=000464
+https://8.baidu.com/template/index/current.html
 ###使用方法：
 ```javascript
 在页面head写入以下代码，实时更新html的fontsize:
-<script src="js/adaptive.js"></script>
+<script src="js/adaptive.js"></script>  // 有缩放，精确还原设计图
+<script src="js/adaptive-version2.js"></script> // 没有缩放，能快速开发的版本
 <script>
     window['adaptive'].desinWidth = 640;// 设计图宽度
     window['adaptive'].baseFont = 18;// 没有缩放时的字体大小
+    window['adaptive'].maxWidth = 480;// 页面最大宽度 默认540
     window['adaptive'].init();// 调用初始化方法
 </script>
 ```
@@ -34,11 +36,11 @@ https://8.baidu.com/template/wise/wise.html?infoFrontCode=000464
     
     html元素字体大小 = document根节点(html)宽度 * 100 / 设计图宽度  
     
-    设置html元素的font-size,然后根据设计图大小/100即为css大小。  
-    比如一个div设计图宽度为89px,那么在css中我们可以这样书写：width:0.89rem;  
+    计算html元素的font-size,使1rem等于100px,方便快速开发  
+    开发时，一个div设计图宽度为89px,那么在css中我们可以这样书写：width:0.89rem;  
     如果是文字，我们也建议使用rem。  
     
-    对于iphone的retina高清显示屏，我们做了缩放处理，以达到最佳显示效果。  
+    对于iphone的retina高清显示屏，基本版本(adaptive.js)我们做了缩放处理，以达到最佳显示效果。 对于快速开发版本(adaptive-version2.js),viewport的width等于设备宽度，不会缩放 
     
 ###注意：如果设计图宽度大于document的宽度，0.01rem将小于1px,故如果设计图是1px,在css中仍然用1px显示。
  可用的全局变量：window.devicePixelRatioValue 当前页面设置的设备像素比
