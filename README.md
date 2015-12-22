@@ -2,6 +2,22 @@
 H5端自适应框架
 参考页面：
 https://8.baidu.com/template/index/current.html
+## 优化宽度问题
+新增最大宽度，解决平板或手机横屏时体验不佳的问题
+```javascript
+window['adaptive'].maxWidth = 480; // 设置最大宽度，默认540px
+```
+需要css配合使用，添加如下代码：
+```css
+body {
+    max-width: 6.4rem; // 设计图宽度为640px时为6.4rem ,750时为7.5rem ，以此类推
+    margin: 0 auto;
+}
+body * {
+    max-width: 6.4rem; // 设计图宽度为640px时为6.4rem ,750时为7.5rem ，以此类推
+}
+```
+
 ###使用方法：
 ```javascript
 在页面head写入以下代码，实时更新html的fontsize:
