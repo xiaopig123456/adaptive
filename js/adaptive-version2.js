@@ -28,13 +28,14 @@
     var newBase = 100;
 
     function setRem() {
-        var visualView = Math.min(docEl.getBoundingClientRect().width, 540); // visual viewport
+        var visualView = Math.min(docEl.getBoundingClientRect().width, lib.maxWidth); // visual viewport
         newBase = 100 * visualView / lib.desinWidth;
         docEl.style.fontSize = newBase + 'px';
     }
     var tid;
     lib.desinWidth = 640;
     lib.baseFont = 18;
+    lib.maxWidth = 540;
     lib.init = function () {
         win.addEventListener('resize', function () {
             clearTimeout(tid);
