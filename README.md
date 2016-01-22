@@ -1,5 +1,6 @@
 # adaptive
 H5端自适应框架
+使用方便，设计图的1px对应0.01rem,设计图的字体大小24px对应0.24rem,就是如此简单！
 参考页面：
 https://8.baidu.com/template/index/current.html
 ## 优化宽度问题
@@ -30,7 +31,7 @@ body * {
     window['adaptive'].init();// 调用初始化方法
 </script>
 ```
-然后在css中设置相应样式即可：
+然后在css中设置相应样式即可： 设计图的1px对应0.01rem,设计图的24px对应0.24rem,就是如此简单！
 ```css
 .main-info {
     height: 0.88rem;
