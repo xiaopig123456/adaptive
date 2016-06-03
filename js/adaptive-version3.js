@@ -14,6 +14,10 @@
         var isIPhone = /iphone/gi.test(win.navigator.appVersion);
         // 布局视口与理想视口的值与设备像素比相等
         dpr = devicePixelRatio;
+        // hack
+        if (/coolpad\u0020*8720L|scl-tl00/i.test(window.navigator.userAgent)) {
+            dpr = 1;
+        }
         // window对象上增加一个属性，提供对外的布局视口与理想视口的值
         win.devicePixelRatioValue = dpr;
         // viewport缩放值，布局视口缩放后刚好显示成理想视口的宽度，页面就不会过长或过短了
@@ -58,7 +62,13 @@
     function setRem() {
         // 布局视口
         // var layoutView = docEl.documentElement.clientWidth; 也可以 获取布局视口的宽度
-        var layoutView = docEl.getBoundingClientRect().width;
+        var layoutView;
+        if (lib.maxWidth) {
+            layoutView = Math.min(docEl.getBoundingClientRect().width, lib.maxWidth * dpr);
+        }
+        else {
+            layoutView = docEl.getBoundingClientRect().width;
+        }
         // 为了计算方便，我们规定 1rem === 100px设计图像素，我们切图的时候就能快速转换
         // 有人问，为什么不让1rem === 1px设计像素呢？
         // 设计图一般是640或者750px
@@ -70,21 +80,29 @@
         // 如果 1rem === 1px 设计像素，newBase就介于0.5到2之间，由于很多浏览器有最小12px限制，这个时候就不能自适应了
         newBase = 100 * layoutView / lib.desinWidth;
         docEl.style.fontSize = newBase + 'px';
+        // rem基准值改变后，手动reflow一下，避免旋转手机后页面自适应问题
+        doc.body&&(doc.body.style.fontSize = lib.baseFont * dpr + 'px');
+        // 重新设置rem后的回调方法
+        lib.setRemCallback&&lib.setRemCallback();
     }
     var tid;
     lib.desinWidth = 640;
     lib.baseFont = 18;
     lib.init = function () {
+        // resize的时候重新设置rem基准值
+        // 触发orientationchange 事件时也会触发resize，故不需要再添加此事件了
         win.addEventListener('resize', function () {
             clearTimeout(tid);
             tid = setTimeout(setRem, 300);
         }, false);
+        // 浏览器缓存中读取时也需要重新设置rem基准值
         win.addEventListener('pageshow', function (e) {
             if (e.persisted) {
                 clearTimeout(tid);
                 tid = setTimeout(setRem, 300);
             }
         }, false);
+        // 设置body上的字体大小
         if (doc.readyState === 'complete') {
             doc.body.style.fontSize = lib.baseFont * dpr + 'px';
         }
@@ -93,7 +111,9 @@
                 doc.body.style.fontSize = lib.baseFont * dpr + 'px';
             }, false);
         }
+        // 设置rem值
         setRem();
+        // html节点设置布局视口与理想视口的像素比
         docEl.setAttribute('data-dpr', dpr);
     };
 })(window, window['adaptive'] || (window['adaptive'] = {}));
