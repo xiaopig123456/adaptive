@@ -116,4 +116,8 @@
         // html节点设置布局视口与理想视口的像素比
         docEl.setAttribute('data-dpr', dpr);
     };
+    // 有些html元素只能以px为单位，所以需要提供一个接口，把rem单位换算成px
+    lib.remToPx = function (remValue) {
+        return remValue * newBase;
+    };
 })(window, window['adaptive'] || (window['adaptive'] = {}));
