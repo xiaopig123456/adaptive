@@ -9,8 +9,8 @@ https://8.baidu.com/template/index/current.html
 ###使用方法：
 ```javascript
 在页面head写入以下代码，实时更新html的fontsize:
-<script src="js/adaptive.js"></script>  // 有缩放，精确还原设计图
-<script src="js/adaptive-version2.js"></script> // 没有缩放，能快速开发的版本
+<script src="js/adaptive.js"></script>  // IOS有缩放，安卓没缩放
+<script src="js/adaptive-version2.js"></script> // IOS,安卓都没有缩放，能快速开发的版本
 <script src="js/adaptive-version3.js"></script> // 无论iphone还是安卓手机，都能精确还原1px
 <script>
     // 设计图宽度
@@ -45,6 +45,7 @@ https://8.baidu.com/template/index/current.html
     line-height: 1;
 }
 ```
+字体也推荐使用rem，没有任何问题，开发起来也方便！
 ### 推荐使用 adaptive-version3.js 在IOS和安卓下都有良好体验
 ## 优化宽度问题
 新增最大宽度，解决平板或手机横屏时体验不佳的问题
@@ -60,6 +61,11 @@ body {
 body * {
     max-width: 6.4rem; // 设计图宽度为640px时为6.4rem ,750时为7.5rem ，以此类推
 }
+```
+## window['adaptive'].remToPx 方法，将rem值转换为px   
+```javascript
+// 将1rem转换为像素值
+window['adaptive'].remToPx(1) 
 ```
 ###adaptivejs原理：  
 
