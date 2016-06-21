@@ -15,7 +15,7 @@
         // 布局视口与理想视口的值与设备像素比相等
         dpr = devicePixelRatio;
         // hack
-        if (/coolpad\u0020*8720L|scl-tl00/i.test(window.navigator.userAgent)) {
+        if (/coolpad\u0020*8720L|scl-tl00|vivo\u0020x3t/i.test(window.navigator.userAgent)) {
             dpr = 1;
         }
         // window对象上增加一个属性，提供对外的布局视口与理想视口的值
