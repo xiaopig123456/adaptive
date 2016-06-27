@@ -87,3 +87,4 @@ window['adaptive'].remToPx(1)
 <script src="js/adaptive-version2.js"></script> // 没有缩放，能快速开发的版本
 <script src="js/adaptive-version3.js"></script> // 无论iphone还是安卓手机，都能精确还原1px，做到高度还原视觉稿 其中还提供了部分iphone手机下解决bug的方法
 ```
+使用中有什么问题可以加 qq群： 295805025
