@@ -12,6 +12,7 @@ https://8.baidu.com/template/index/current.html
 <script src="js/adaptive.js"></script>  // IOS有缩放，安卓没缩放
 <script src="js/adaptive-version2.js"></script> // IOS,安卓都没有缩放，能快速开发的版本
 <script src="js/adaptive-version3.js"></script> // 无论iphone还是安卓手机，都能精确还原1px
+以上三个版本的js只需引用一个，按项目需求而定
 <script>
     // 设计图宽度
     window['adaptive'].desinWidth = 750;
