@@ -24,7 +24,7 @@
         if (hasMetaEl) {
             // ios9 不用设置 maximum-scale minimum-scale，否则页面会出现可左右拖动的效果，IOS9的bug或者故意为之？
             if (isIPhone) {
-                hasMetaEl.setAttribute('content', 'initial-scale=' + scale + ', user-scalable=no');
+                hasMetaEl.setAttribute('content', 'width=device-width, initial-scale=' + scale + ', user-scalable=no');
             }
             // target-densitydpi 目标设备密度等级，默认值medium-dpi，我们的目标是css中的1px会等于物理像素中的1px，故使用target-densitydpi=device-dpi
             else {
@@ -36,7 +36,7 @@
             var metaEl = doc.createElement('meta');
             metaEl.setAttribute('name', 'viewport');
             if (isIPhone) { 
-                metaEl.setAttribute('content', 'initial-scale=' + scale + ', user-scalable=no');
+                metaEl.setAttribute('content', 'width=device-width, initial-scale=' + scale + ', user-scalable=no');
             }
             else {
                 metaEl.setAttribute('content', 'width=device-width, initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
