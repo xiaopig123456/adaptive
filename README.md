@@ -47,7 +47,7 @@ https://8.baidu.com/template/index/current.html
 }
 ```
 字体也推荐使用rem，没有任何问题，开发起来也方便！
-### 推荐使用 adaptive-version3.js 在IOS和安卓下都有良好体验
+### 推荐使用 adaptive-version2.js,adaptive.js, 对于adaptive-version3.js谨慎使用，因为安卓某些版本可能会遇到viewport缩放有bug,待解决
 ## 优化宽度问题
 新增最大宽度，解决平板或手机横屏时体验不佳的问题
 ```javascript
