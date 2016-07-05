@@ -11,7 +11,7 @@ https://8.baidu.com/template/index/current.html
 在页面head写入以下代码，实时更新html的fontsize:
 <script src="js/adaptive.js"></script>  // IOS有缩放，安卓没缩放
 <script src="js/adaptive-version2.js"></script> // IOS,安卓都没有缩放，能快速开发的版本
-<script src="js/adaptive-version3.js"></script> // 无论iphone还是安卓手机，都能精确还原1px
+<script src="js/adaptive-version3.js"></script> // 无论iphone还是安卓手机，都能精确还原1px webview中用用尚可，安卓下viewport会有兼容性问题，so，谨慎使用
 以上三个版本的js只需引用一个，按项目需求而定
 <script>
     // 设计图宽度
@@ -77,7 +77,7 @@ window['adaptive'].remToPx(1)
     如果是文字，我们也建议使用rem。  
     
     对于iphone的retina高清显示屏，基本版本(adaptive.js)我们做了缩放处理，以达到最佳显示效果。 对于快速开发版本(adaptive-version2.js),viewport的width等于设备宽度，不会缩放
-    推荐使用 adaptive-version3.js 在IOS和安卓下都会缩放
+    如果只是webview里，可以使用 adaptive-version3.js 在IOS和安卓下都会缩放，否则还是谨慎使用此版本，抱歉
     
 ###注意：可能存在0.01rem将小于1px而不显示的问题,故如果设计图是1px,在css中仍然用1px显示。
  可用的全局变量：window.devicePixelRatioValue 当前页面设置的设备像素比
@@ -86,6 +86,6 @@ window['adaptive'].remToPx(1)
 ```javascript
 <script src="js/adaptive.js"></script>  // iphone下缩放，retina显示屏下能精确还原1px
 <script src="js/adaptive-version2.js"></script> // 没有缩放，能快速开发的版本
-<script src="js/adaptive-version3.js"></script> // 无论iphone还是安卓手机，都能精确还原1px，做到高度还原视觉稿 其中还提供了部分iphone手机下解决bug的方法
+<script src="js/adaptive-version3.js"></script> // 无论iphone还是安卓手机，都能精确还原1px，做到高度还原视觉稿，如果只是在webview里使用，建议使用，否则请谨慎使用
 ```
 使用中有问题可以加QQ群讨论：295805025
