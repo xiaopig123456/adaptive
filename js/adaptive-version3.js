@@ -61,7 +61,7 @@
 
     function setRem() {
         // 布局视口
-        // var layoutView = docEl.documentElement.clientWidth; 也可以 获取布局视口的宽度
+        // var layoutView = docEl.clientWidth; 也可以 获取布局视口的宽度
         var layoutView;
         if (lib.maxWidth) {
             layoutView = Math.min(docEl.getBoundingClientRect().width, lib.maxWidth * dpr);
@@ -88,6 +88,10 @@
     var tid;
     lib.desinWidth = 640;
     lib.baseFont = 18;
+    // 局部刷新的时候部分chrome版本字体过大的问题
+    lib.reflow = function() {
+        docEl.clientWidth;
+    };
     lib.init = function () {
         // resize的时候重新设置rem基准值
         // 触发orientationchange 事件时也会触发resize，故不需要再添加此事件了
