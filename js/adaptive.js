@@ -90,13 +90,13 @@
         newBase = 100 * layoutView / lib.desinWidth;
         docEl.style.fontSize = newBase + 'px';
         // rem基准值改变后，手动reflow一下，避免旋转手机后页面自适应问题
-        doc.body&&(doc.body.style.fontSize = lib.baseFont * dpr + 'px');
+        doc.body&&(doc.body.style.fontSize = lib.baseFont / 100 + 'rem');
         // 重新设置rem后的回调方法
         lib.setRemCallback&&lib.setRemCallback();
     }
     var tid;
     lib.desinWidth = 640;
-    lib.baseFont = 18;
+    lib.baseFont = 24;
     // 局部刷新的时候部分chrome版本字体过大的问题
     lib.reflow = function() {
         docEl.clientWidth;
@@ -117,11 +117,11 @@
         }, false);
         // 设置body上的字体大小
         if (doc.readyState === 'complete') {
-            doc.body.style.fontSize = lib.baseFont * dpr + 'px';
+            doc.body.style.fontSize = lib.baseFont / 100 + 'rem';
         }
         else {
             doc.addEventListener('DOMContentLoaded', function (e) {
-                doc.body.style.fontSize = lib.baseFont * dpr + 'px';
+                doc.body.style.fontSize = lib.baseFont / 100 + 'rem';
             }, false);
         }
         // 设置rem值
