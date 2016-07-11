@@ -16,8 +16,8 @@ https://8.baidu.com/template/index/current.html
 <script>
     // 设计图宽度
     window['adaptive'].desinWidth = 750;
-    // body 字体大小
-    window['adaptive'].baseFont = 18;
+    // body 字体大小 会将body字体大小设置为 baseFont / 100 + 'rem'
+    window['adaptive'].baseFont = 28;
     /*
     // 显示最大宽度 可选
     window['adaptive'].maxWidth = 480;
