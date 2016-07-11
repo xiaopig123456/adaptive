@@ -30,6 +30,9 @@ https://8.baidu.com/template/index/current.html
     window['adaptive'].init();
 </script>
 ```
+##优先加载该JS，并执行
+
+
 然后在css中设置相应样式即可： 设计图的1px对应0.01rem,设计图的24px对应0.24rem,就是如此简单！
 ```css
 .main-info {
