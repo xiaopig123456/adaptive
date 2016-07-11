@@ -30,6 +30,9 @@ https://8.baidu.com/template/index/current.html
     window['adaptive'].init();
 </script>
 ```
+##优先加载该JS，并执行
+
+
 然后在css中设置相应样式即可： 设计图的1px对应0.01rem,设计图的24px对应0.24rem,就是如此简单！
 ```css
 .main-info {
@@ -88,4 +91,13 @@ window['adaptive'].remToPx(1)
 <script src="js/adaptive-version2.js"></script> // 没有缩放，能快速开发的版本
 <script src="js/adaptive-version3.js"></script> // 无论iphone还是安卓手机，都能精确还原1px，做到高度还原视觉稿，如果只是在webview里使用，建议使用，否则请谨慎使用
 ```
+
+###部分兼容性问题解决方法
+    1，部分chrome版本局部刷新时字体过大问题
+    插入数据后调用方法：
+    window.adaptive.reflow();
+    2，后端模板渲染是刚开始字体过大问题
+    可以给body设置一个初始字体大小值，就不会出现此问题了
+    
+    
 使用中有问题可以加QQ群讨论：295805025
