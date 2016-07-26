@@ -93,6 +93,7 @@
         doc.body&&(doc.body.style.fontSize = lib.baseFont / 100 + 'rem');
         // 重新设置rem后的回调方法
         lib.setRemCallback&&lib.setRemCallback();
+        lib.newBase = newBase;
     }
     var tid;
     lib.desinWidth = 640;
