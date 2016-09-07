@@ -55,7 +55,7 @@
     setViewport();
     var newBase = 100;
 
-    function setRem() {
+    function setRem(errDpr) {
         // 布局视口
         // var layoutView = docEl.clientWidth; 也可以 获取布局视口的宽度
         var layoutView;
@@ -74,7 +74,7 @@
         // newBase = 100 * layoutView / desinWidth
         // newBase = 介于50到200之间
         // 如果 1rem === 1px 设计像素，newBase就介于0.5到2之间，由于很多浏览器有最小12px限制，这个时候就不能自适应了
-        newBase = 100 * layoutView / lib.desinWidth;
+        newBase = 100 * layoutView / lib.desinWidth * (errDpr || 1);
         docEl.style.fontSize = newBase + 'px';
         // rem基准值改变后，手动reflow一下，避免旋转手机后页面自适应问题
         doc.body&&(doc.body.style.fontSize = lib.baseFont / 100 + 'rem');
@@ -89,6 +89,22 @@
     lib.reflow = function() {
         docEl.clientWidth;
     };
+    // 检查安卓下rem值是否显示正确
+    function checkRem() {
+        if (/android/ig.test(window.navigator.appVersion)) {
+            var hideDiv = document.createElement('p');
+            hideDiv.style.height = '1px';
+            hideDiv.style.width = '2.5rem';
+            hideDiv.style.visibility = 'hidden';
+            document.body.appendChild(hideDiv);
+            var now = hideDiv.offsetWidth;
+            var right = window.adaptive.newBase * 2.5; 
+            if (Math.abs(right / now - 1) > 0.05) {
+                setRem(right / now);
+            }
+            document.body.removeChild(hideDiv);
+        }
+    }
     lib.init = function () {
         // resize的时候重新设置rem基准值
         // 触发orientationchange 事件时也会触发resize，故不需要再添加此事件了
@@ -106,10 +122,12 @@
         // 设置body上的字体大小
         if (doc.readyState === 'complete') {
             doc.body.style.fontSize = lib.baseFont / 100 + 'rem';
+            checkRem();
         }
         else {
             doc.addEventListener('DOMContentLoaded', function (e) {
                 doc.body.style.fontSize = lib.baseFont / 100 + 'rem';
+                checkRem();
             }, false);
         }
         // 设置rem值
