@@ -92,6 +92,9 @@ window['adaptive'].remToPx(1)
 <script src="js/adaptive-version3.js"></script> // 无论iphone还是安卓手机，都能精确还原1px，做到高度还原视觉稿，如果只是在webview里使用，建议使用，否则请谨慎使用
 ```
 
+### 提交日志
+2016-9-22 修复vivo 华为P7 rem展示不准确问题
+
 ###部分兼容性问题解决方法
     1，部分chrome版本局部刷新时字体过大问题
     插入数据后调用方法：
