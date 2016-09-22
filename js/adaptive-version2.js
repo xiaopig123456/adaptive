@@ -54,8 +54,9 @@
     }
     setViewport();
     var newBase = 100;
+    lib.errDpr = 1;
 
-    function setRem(errDpr) {
+    function setRem() {
         // 布局视口
         // var layoutView = docEl.clientWidth; 也可以 获取布局视口的宽度
         var layoutView;
@@ -74,7 +75,7 @@
         // newBase = 100 * layoutView / desinWidth
         // newBase = 介于50到200之间
         // 如果 1rem === 1px 设计像素，newBase就介于0.5到2之间，由于很多浏览器有最小12px限制，这个时候就不能自适应了
-        newBase = 100 * layoutView / lib.desinWidth * (errDpr || 1);
+        newBase = 100 * layoutView / lib.desinWidth * (lib.errDpr || 1);
         docEl.style.fontSize = newBase + 'px';
         // rem基准值改变后，手动reflow一下，避免旋转手机后页面自适应问题
         doc.body&&(doc.body.style.fontSize = lib.baseFont / 100 + 'rem');
@@ -100,7 +101,8 @@
             var now = hideDiv.offsetWidth;
             var right = window.adaptive.newBase * 2.5; 
             if (Math.abs(right / now - 1) > 0.05) {
-                setRem(right / now);
+                lib.errDpr = right / now;
+                setRem();
             }
             document.body.removeChild(hideDiv);
         }
