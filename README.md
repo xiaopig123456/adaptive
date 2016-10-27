@@ -9,15 +9,12 @@ https://8.baidu.com/template/index/current.html
 ###使用方法：
 ```javascript
 在页面head写入以下代码，实时更新html的fontsize:
-<script src="js/adaptive.js"></script>  // IOS有缩放，安卓没缩放
-<script src="js/adaptive-version2.js"></script> // IOS,安卓都没有缩放，能快速开发的版本
-<script src="js/adaptive-version3.js"></script> // 无论iphone还是安卓手机，都能精确还原1px webview中用用尚可，安卓下viewport会有兼容性问题，so，谨慎使用
-以上三个版本的js只需引用一个，按项目需求而定
+<script src="js/adaptive.js"></script> 
 <script>
     // 设计图宽度
-    window['adaptive'].desinWidth = 750;
+    window['adaptive'].desinWidth = 640;
     // body 字体大小 会将body字体大小设置为 baseFont / 100 + 'rem'  750的设计图一般设置为28,640的设计图一般设置为24
-    window['adaptive'].baseFont = 28;
+    window['adaptive'].baseFont = 24;
     /*
     // 显示最大宽度 可选
     window['adaptive'].maxWidth = 480;
