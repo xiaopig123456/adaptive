@@ -1,4 +1,3 @@
-
 (function (win, lib) {
     var doc = win.document;
     var docEl = doc.documentElement;
@@ -12,20 +11,8 @@
     function setViewport() {
         // 判断IOS
         var isIPhone = /iphone/gi.test(win.navigator.appVersion);
-        // 布局视口与理想视口的值与设备像素比相等 只针对iphone
-        if (isIPhone) {
-            if (devicePixelRatio >= 3) {
-                dpr = 3;
-            }
-            else if (devicePixelRatio === 2) {
-                dpr = 2;
-            }
-            else {
-                dpr = 1;
-            }
-        }
-        else {
-            dpr = 1;
+        if (lib.scaleType === 2 && isIPhone || lib.scaleType === 3) {
+            dpr = devicePixelRatio;
         }
         // window对象上增加一个属性，提供对外的布局视口与理想视口的值
         win.devicePixelRatioValue = dpr;
@@ -33,39 +20,34 @@
         scale = 1 / dpr;
         // 获取已有的viewport
         var hasMetaEl = doc.querySelector('meta[name="viewport"]');
+        var metaStr = 'initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no';
+        if (dpr === 1) {
+            metaStr = 'width=device-width, '.concat(metaStr);
+        }
+        if (!isIPhone && dpr !== 1) {
+            metaStr = metaStr.concat(', target-densitydpi=device-dpi');
+        }
         // 如果有，改变之
         if (hasMetaEl) {
-            // ios9 不用设置 maximum-scale minimum-scale，否则页面会出现可左右拖动的效果，IOS9的bug或者故意为之？
-            if (isIPhone) {
-                hasMetaEl.setAttribute('content', 'initial-scale=' + scale + ', user-scalable=no');
-            }
-            // target-densitydpi 目标设备密度等级，默认值medium-dpi，我们的目标是css中的1px会等于物理像素中的1px，故使用target-densitydpi=device-dpi
-            else {
-                hasMetaEl.setAttribute('content', 'width=device-width, initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
-            } 
+            hasMetaEl.setAttribute('content', metaStr);
         }
         // 如果没有，添加之
         else {
             var metaEl = doc.createElement('meta');
             metaEl.setAttribute('name', 'viewport');
-            if (isIPhone) { 
-                metaEl.setAttribute('content', 'initial-scale=' + scale + ', user-scalable=no');
-            }
-            else {
-                metaEl.setAttribute('content', 'width=device-width, initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
-            }
+            metaEl.setAttribute('content', metaStr);
             
             if (docEl.firstElementChild) {
                 docEl.firstElementChild.appendChild(metaEl);
             }
             else {
-                var wrap = doc.createElement('div');
-                wrap.appendChild(metaEl);
-                doc.write(wrap.innerHTML);
+                var containDiv = doc.createElement('div');
+                containDiv.appendChild(metaEl);
+                docEl.appendChild(containDiv);
             }
         }
     }
-    setViewport();
+    
     var newBase = 100;
     lib.errDpr = 1;
 
@@ -97,8 +79,8 @@
         lib.newBase = newBase;
     }
     var tid;
-    lib.desinWidth = 640;
-    lib.baseFont = 24;
+    lib.desinWidth = 750;
+    lib.baseFont = 28;
     // 局部刷新的时候部分chrome版本字体过大的问题
     lib.reflow = function() {
         docEl.clientWidth;
@@ -145,6 +127,7 @@
                 checkRem();
             }, false);
         }
+        setViewport();
         // 设置rem值
         setRem();
         // html节点设置布局视口与理想视口的像素比

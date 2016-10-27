@@ -25,6 +25,8 @@ https://8.baidu.com/template/index/current.html
     window['adaptive'].setRemCallback = function () {
         alert(1)
     }
+    // scaleType 1:iphone andriod下viewport均无缩放 2:iphone下viewport有缩放,andriod没有 3:iphone andriod下viewport均有缩放; 默认值为1
+    window['adaptive'].scaleType = 1;
     */
     // 初始化
     window['adaptive'].init();
@@ -49,8 +51,8 @@ https://8.baidu.com/template/index/current.html
     line-height: 1;
 }
 ```
-字体也推荐使用rem，没有任何问题，开发起来也方便！
-### 推荐使用 adaptive-version2.js,adaptive.js, 对于adaptive-version3.js谨慎使用，因为安卓某些版本可能会遇到viewport缩放有bug,待解决
+字体也推荐使用rem
+### 推荐 window['adaptive'].scaleType = 1, 对于window['adaptive'].scaleType = 3谨慎使用，因为安卓某些版本可能会遇到viewport缩放有bug,待解决
 ## 优化宽度问题
 新增最大宽度，解决平板或手机横屏时体验不佳的问题
 ```javascript
@@ -87,13 +89,14 @@ window['adaptive'].remToPx(1)
 
 ### 关于3个版本
 ```javascript
-<script src="js/adaptive.js"></script>  // iphone下缩放，retina显示屏下能精确还原1px
-<script src="js/adaptive-version2.js"></script> // 没有缩放，能快速开发的版本
-<script src="js/adaptive-version3.js"></script> // 无论iphone还是安卓手机，都能精确还原1px，做到高度还原视觉稿，如果只是在webview里使用，建议使用，否则请谨慎使用
+window['adaptive'].scaleType = 2  // iphone下缩放，retina显示屏下能精确还原1px
+window['adaptive'].scaleType = 1 // 没有缩放，能快速开发的版本
+window['adaptive'].scaleType = 3 // 无论iphone还是安卓手机，都能精确还原1px，做到高度还原视觉稿，如果只是在webview里使用，建议使用，否则请谨慎使用
 ```
 
 ### 提交日志
 2016-9-22 修复vivo 华为P7 rem展示不准确问题
+2016-10-27 将原来的三个版本的js文件合并为一个文件，并通过window['adaptive'].scaleType参数实现不同的效果
 
 ###部分兼容性问题解决方法
     1，部分chrome版本局部刷新时字体过大问题
