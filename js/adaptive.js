@@ -1,3 +1,4 @@
+var adaptive = {};
 (function (win, lib) {
     var doc = win.document;
     var docEl = doc.documentElement;
@@ -137,4 +138,13 @@
     lib.remToPx = function (remValue) {
         return remValue * newBase;
     };
-})(window, window['adaptive'] || (window['adaptive'] = {}));
+})(window, adaptive);
+if (typeof module != 'undefined' && module.exports) {
+    module.exports = adaptive;
+} else if (typeof define == 'function' && define.amd) {
+    define(function() {
+        return adaptive;
+    });
+} else {
+    window.adaptive = adaptive;
+}
