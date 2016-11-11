@@ -8,15 +8,17 @@ https://8.baidu.com/template/index/current.html
 
 ###使用方法：
 
-方法一：
+代码引用方法一：
     
     npm install adaptive.js
    
-方法二：
+代码引用方法二：
+
+    在页面head写入以下代码，实时更新html的fontsize:
+    
+    <script src="js/adaptive.js"></script> 
 
 ```javascript
-在页面head写入以下代码，实时更新html的fontsize:
-<script src="js/adaptive.js"></script> 
 <script>
     // 设计图宽度
     window['adaptive'].desinWidth = 640;
