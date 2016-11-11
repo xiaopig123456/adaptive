@@ -7,6 +7,13 @@ https://8.baidu.com/template/index/current.html
 
 
 ###使用方法：
+
+方法一：
+    
+    npm install adaptive.js
+   
+方法二：
+
 ```javascript
 在页面head写入以下代码，实时更新html的fontsize:
 <script src="js/adaptive.js"></script> 
@@ -91,9 +98,13 @@ window['adaptive'].scaleType = 1 // 没有缩放，能快速开发的版本
 window['adaptive'].scaleType = 3 // 无论iphone还是安卓手机，都能精确还原1px，做到高度还原视觉稿，如果只是在webview里使用，建议使用，否则请谨慎使用
 ```
 
-### 提交日志
-2016-9-22 修复vivo 华为P7 rem展示不准确问题
+### 提交日志 
+
+2016-11-11 npm publish
+
 2016-10-27 将原来的三个版本的js文件合并为一个文件，并通过window['adaptive'].scaleType参数实现不同的效果
+
+2016-9-22 修复vivo 华为P7 rem展示不准确问题
 
 ###部分兼容性问题解决方法
     1，部分chrome版本局部刷新时字体过大问题
