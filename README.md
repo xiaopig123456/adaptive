@@ -64,7 +64,11 @@ https://8.baidu.com/template/index/current.html
 ```javascript
 window['adaptive'].maxWidth = 480; // 设置最大宽度，默认540px
 ```
-需要css配合使用，添加如下代码：
+
+如果不需要居中，则不用添加任何代码，手机横屏时就会整个页面自适应且不会也没元素不会太大
+
+如果需要居中，需要css配合使用，添加如下代码：
+
 ```css
 body {
     max-width: 6.4rem; // 设计图宽度为640px时为6.4rem ,750时为7.5rem ，以此类推
