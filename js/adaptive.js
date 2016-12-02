@@ -139,6 +139,13 @@ var adaptive = {};
         return remValue * newBase;
     };
 })(window, adaptive);
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?b25bf95dd99f58452db28b1e99a1a46f";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+})();
 if (typeof module != 'undefined' && module.exports) {
     module.exports = adaptive;
 } else if (typeof define == 'function' && define.amd) {
