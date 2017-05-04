@@ -88,14 +88,14 @@ var adaptive = {};
     };
     // 检查安卓下rem值是否显示正确
     function checkRem() {
-        if (/android/ig.test(window.navigator.appVersion)) {
+        if (/android/ig.test(win.navigator.appVersion)) {
             var hideDiv = document.createElement('p');
             hideDiv.style.height = '1px';
             hideDiv.style.width = '2.5rem';
             hideDiv.style.visibility = 'hidden';
             document.body.appendChild(hideDiv);
             var now = hideDiv.offsetWidth;
-            var right = window.adaptive.newBase * 2.5; 
+            var right = lib.newBase * 2.5; 
             if (Math.abs(right / now - 1) > 0.05) {
                 lib.errDpr = right / now;
                 setRem();
