@@ -1,5 +1,5 @@
 # adaptive
-H5端自适应框架
+H5端自适应解决方案
 使用方便，设计图的1px对应0.01rem,设计图的字体大小24px对应0.24rem,就是如此简单！
 
 这里介绍一个工具：[px-rem](https://github.com/finance-sh/px-rem)
