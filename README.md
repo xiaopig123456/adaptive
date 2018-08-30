@@ -1,7 +1,10 @@
 # adaptive-dookay
 H5端自适应解决方案
+
 使用方便，设计图的1px对应0.01rem,设计图的字体大小24px对应0.24rem,就是如此简单！
-这里新增了minWidth参数项，用来设置最小小款度。
+
+本插件forked于finance-sh/adaptive，这里新增了minWidth参数项设置最小款度，用于解决pc端的适配问题。
+
 [上海稻壳网络科技有限公司](http://www.dookay.com)
 
 
@@ -26,6 +29,7 @@ H5端自适应解决方案
     /*
     // 显示最大宽度 可选
     window['adaptive'].maxWidth = 480;
+    window['adaptive'].minWidth = 320;
     // rem值改变后执行方法 可选
     window['adaptive'].setRemCallback = function () {
         alert(1)

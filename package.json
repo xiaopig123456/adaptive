@@ -1,23 +1,23 @@
 {
-  "name": "adaptive.js",
-  "version": "0.0.2",
-  "description": "web self-adaption",
-  "main": "js/adaptive.js",
+  "name": "adaptive-dookay",
+  "version": "1.0.0",
+  "description": "H5端自适应解决方案，设计图的1px对应0.01rem,设计图的字体大小24px对应0.24rem,就是如此简单！",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/finance-sh/adaptive.git"
+    "url": "git+https://github.com/xiaopig123456/adaptive-dookay.git"
   },
   "keywords": [
-    "web",
-    "adaptive"
+    "adaptive",
+    "adaptive.js"
   ],
-  "author": "zhoushengmufc",
+  "author": "dookay",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/finance-sh/adaptive/issues"
+    "url": "https://github.com/xiaopig123456/adaptive-dookay/issues"
   },
-  "homepage": "https://github.com/finance-sh/adaptive#readme"
+  "homepage": "https://github.com/xiaopig123456/adaptive-dookay#readme"
 }
