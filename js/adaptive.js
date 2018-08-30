@@ -56,10 +56,12 @@ var adaptive = {};
         // 布局视口
         // var layoutView = docEl.clientWidth; 也可以 获取布局视口的宽度
         var layoutView;
-        if (lib.maxWidth) {
+        var _docWidth = docEl.clientWidth;
+        if (lib.maxWidth && _docWidth>lib.maxWidth) {
             layoutView = Math.min(docEl.getBoundingClientRect().width, lib.maxWidth * dpr);
-        }
-        else {
+        }else if(lib.minWidth && _docWidth<lib.minWidth){
+            layoutView = Math.max(docEl.getBoundingClientRect().width, lib.minWidth * dpr);
+        }else {
             layoutView = docEl.getBoundingClientRect().width;
         }
         // 为了计算方便，我们规定 1rem === 100px设计图像素，我们切图的时候就能快速转换
