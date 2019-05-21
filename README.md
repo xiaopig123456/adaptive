@@ -22,7 +22,7 @@ H5端自适应解决方案
 
 ```javascript
 <script>
-    // 设计图宽度
+    // 设计图宽度，如果是pc端请设置为设计稿居中内容的宽度，以下以移动端作为示例
     window['adaptive'].desinWidth = 640;
     // body 字体大小 会将body字体大小设置为 baseFont / 100 + 'rem'  750的设计图一般设置为28,640的设计图一般设置为24
     window['adaptive'].baseFont = 24;
