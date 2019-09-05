@@ -12,7 +12,7 @@ H5端自适应解决方案
 
 代码引用方法一：
     
-    npm install adaptive-dookay --S
+    npm install adaptive-dookay --save
    
 代码引用方法二：
 
